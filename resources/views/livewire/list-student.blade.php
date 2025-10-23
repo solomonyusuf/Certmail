@@ -68,7 +68,7 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">#Certificate ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">#Student ID</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Certificate</th>
@@ -77,7 +77,7 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @forelse($students as $index => $student)
                         <tr>
-                            <td class="px-6 py-4 text-sm text-gray-900">{{ 'NGA-'.substr($student->id, 0,13) }}</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">{{ substr($student->id, 0,13) }}</td>
                             <td class="px-6 py-4 text-sm text-gray-900">{{ $student->name }}</td>
                             <td class="px-6 py-4 text-sm text-gray-600">{{ $student->email }}</td>
                             <td class="px-6 py-4 text-sm text-gray-600">

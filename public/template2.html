@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Completion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: white;
+            padding: 20px;
+        }
+
+        .certificate {
+            width: 1200px;
+            background: white;
+            padding: 80px;
+            border: 15px solid #008751;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .certificate::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            border: none;
+            pointer-events: none;
+        }
+
+        .certificate::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 80px;
+            height: 40px;
+            border-top: 2px solid #008751;
+            border-left: 2px solid #008751;
+        }
+
+        .corner-tr {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 40px;
+            border-top: 2px solid #008751;
+            border-right: 2px solid #008751;
+        }
+
+        .corner-bl {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 80px;
+            height: 40px;
+            border-bottom: 2px solid #008751;
+            border-left: 2px solid #008751;
+        }
+
+        .corner-br {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 40px;
+            border-bottom: 2px solid #008751;
+            border-right: 2px solid #008751;
+        }
+
+        .cert-number {
+            position: absolute;
+            top: 30px;
+            left: 70px;
+            font-size: 14px;
+            color: #333;
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            margin-top: 30px;
+            gap: 15px;
+            flex-wrap: nowrap;
+        }
+
+        .logo-space {
+            width: 120px;
+            height: 70px;
+            border: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+
+        .certificate-title {
+            text-align: center;
+            font-size: 72px;
+            font-family: 'Pacifico', cursive;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .certificate-body {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .certify-text {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .recipient-name {
+            font-size: 18px;
+            color: #333;
+            margin: 40px 0;
+            padding: 15px;
+            border-bottom: 3px solid #333;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .attended-text {
+            font-size: 18px;
+            color: #555;
+            margin: 30px 0 20px;
+        }
+
+        .program-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #222;
+            margin: 20px 0;
+        }
+
+        .date {
+            font-size: 20px;
+            color: #555;
+            margin: 30px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .signature-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 60px;
+            gap: 40px;
+        }
+
+        .signature-block {
+            flex: 1;
+            text-align: center;
+        }
+
+        .signature-space {
+            width: 100%;
+            height: 80px;
+            border-bottom: 2px solid #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .signature-placeholder {
+            color: #ccc;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .signature-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .signature-title {
+            font-size: 16px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .seal-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 30px;
+        }
+
+        .seal {
+            width: 120px;
+            height: 130px;
+            border:0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f9f9;
+            border-radius: 5px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .certificate {
+                box-shadow: none;
+            }
+        }
+
+        @media screen and (max-width: 1250px) {
+            .certificate {
+                width: 95%;
+                padding: 40px;
+            }
+
+            .logo-space {
+                width: 120px;
+                height: 60px;
+                font-size: 10px;
+            }
+
+            .certificate-title {
+                font-size: 56px;
+            }
+
+            .program-name {
+                font-size: 24px;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            .certificate {
+                padding: 30px;
+                border-width: 10px;
+            }
+
+            .certificate::before {
+                top: 20px;
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+            }
+
+            .cert-number {
+                font-size: 12px;
+                top: 35px;
+                left: 45px;
+            }
+
+            .logo-container {
+                gap: 10px;
+                margin-top: 25px;
+            }
+
+            .logo-space {
+                width: 100px;
+                height: 50px;
+                font-size: 9px;
+            }
+
+            .certificate-title {
+                font-size: 48px;
+            }
+
+            .certify-text,
+            .attended-text {
+                font-size: 16px;
+            }
+
+            .program-name {
+                font-size: 20px;
+            }
+
+            .date {
+                font-size: 16px;
+            }
+
+            .signature-name {
+                font-size: 16px;
+            }
+
+            .signature-title {
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            .certificate {
+                padding: 20px;
+            }
+
+            .logo-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .logo-space {
+                width: 90px;
+                height: 45px;
+            }
+
+            .certificate-title {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+
+            .certify-text,
+            .attended-text {
+                font-size: 14px;
+            }
+
+            .recipient-name {
+                font-size: 16px;
+                min-height: 50px;
+            }
+
+            .program-name {
+                font-size: 18px;
+            }
+
+            .date {
+                font-size: 14px;
+            }
+
+            .signature-container {
+                flex-direction: column;
+                gap: 30px;
+                margin-top: 40px;
+            }
+
+            .seal-container {
+                order: -1;
+                margin: 20px 0;
+            }
+
+            .signature-space {
+                height: 60px;
+            }
+
+            .signature-name {
+                font-size: 14px;
+            }
+
+            .signature-title {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate">
+        <div class="corner-tr"></div>
+        <div class="corner-bl"></div>
+        <div class="corner-br"></div>
+        
+        <div class="cert-number">2408671</div>
+        
+        <div class="logo-container">
+            <div class="logo-space">
+                 <img style="height: 40px;" src="nira-logo.png" />
+            </div>
+            <div class="logo-space">
+                 <img style="height: 60px;" src="placeholder.jpg" />
+            </div>
+            <div class="logo-space">
+                 <img style="height: 60px;" src="placeholder.jpg" />
+            </div>
+            <div class="logo-space">
+                 <img style="height: 60px;" src="placeholder.jpg" />
+            </div>
+            <div class="logo-space">
+                 <img style="height: 60px;" src="placeholder.jpg" />
+            </div>
+            <div class="logo-space">
+                <img style="height: 60px;" src="logo.png" />
+            </div>
+        </div>
+
+        <div class="certificate-title">Certificate of Completion</div>
+
+        <div class="certificate-body">
+            <div class="certify-text">This is to certify that</div>
+            
+            <div class="recipient-name">
+                [Recipient Name]
+            </div>
+
+            <div class="attended-text">attended the training on</div>
+            
+            <div class="program-name">Reseller Entrepreneurship Programme</div>
+
+            <div class="date">September 2025</div>
+        </div>
+
+        <div class="signature-container">
+            <div class="signature-block">
+                <div class="signature-space">
+                    <img class="signature-placeholder" style="height: 60px;" src="placeholder.jpg" />
+                
+                </div>
+                <div class="signature-name">Adesola Akinsanya</div>
+                <div class="signature-title">President, NiRA</div>
+            </div>
+
+            <div class="seal-container">
+                <img class="seal" src="badge.png"/>
+            </div>
+
+            <div class="signature-block">
+                <div class="signature-space">
+                    <img class="signature-placeholder" style="height: 60px;" src="placeholder.jpg" />
+                
+                </div>
+                <div class="signature-name">Olumide Coker</div>
+                <div class="signature-title">Dean, .ng Academy</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
