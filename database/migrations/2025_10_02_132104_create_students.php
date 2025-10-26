@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');  
-            $table->longText('certificate');  
-            $table->string('email');
+            $table->longText('certificate')->nullable();  
+            $table->string('email')->nullable();
             $table->foreignUuid('training_id')->references('id')->on('trannings')->nullable(); 
             $table->timestamps();
         });

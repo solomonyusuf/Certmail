@@ -21,12 +21,27 @@ class EditCertificate extends Component
     {
         $trainning = Tranning::find($request->id);
         $meta = json_decode($trainning->meta_data);
-        $meta->certificate = $request->content;
+
+        // Check if a file was uploaded
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+
+            // Generate a unique filename
+            $filename = time() . '_' . $file->getClientOriginalName();
+
+            // Move the file to public/uploads
+            $file->move(public_path('uploads'), $filename);
+
+            // Store the relative path in meta
+            $meta->certificate = 'uploads/' . $filename;
+        }
+ 
         $trainning->meta_data = json_encode($meta);
         $trainning->save();
-        
-        return redirect()->back();
+
+        return redirect()->back()->with('success', 'Certificate saved successfully!');
     }
+
     
     public function render()
     {

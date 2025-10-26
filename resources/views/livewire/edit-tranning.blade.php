@@ -23,124 +23,113 @@
         <!-- CKEditor Textarea -->
         <div class="mb-4">
             <textarea name="content" id="invitation" class="w-full border rounded-md focus:ring focus:ring-indigo-300">
-                <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <title>Your Certificate is Ready!</title>
-                        </head>
-                        <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4;">
-                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f4f4f4;">
+               <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Completion</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background-color: #f5f5f5;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f5f5f5;">
+        <tr>
+            <td style="padding: 40px 20px;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="margin: 0 auto; background-color: #ffffff;">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td style="padding: 32px 40px;">
+                            <img src="{{ asset('logo.png') }}" alt="NiRA" style="height: 48px; display: block;">
+                        </td>
+                    </tr>
+                    
+                    <!-- Content -->
+                    <tr>
+                        <td style="padding: 48px 40px;">
+                            <h1 style="color: #1a1a1a; font-size: 24px; font-weight: 600; margin: 0 0 24px 0; line-height: 1.3;">
+                                Certificate of Completion
+                            </h1>
+                            
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin: 0 0 16px 0;">
+                                Dear [Student Name],
+                            </p>
+                            
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin: 0 0 24px 0;">
+                                This confirms your successful completion of the [Training Program Name] on [Date]. Your certificate is now available for download.
+                            </p>
+                            
+                            <!-- Certificate Info Box -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: 0 0 32px 0; border: 1px solid #e5e5e5; background-color: #fafafa;">
                                 <tr>
-                                    <td style="padding: 20px 0;">
-                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                                            
-                                            <!-- Logo Section -->
+                                    <td style="padding: 24px;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                                             <tr>
-                                                <td style="background: linear-gradient(135deg, #1a5f3f 0%, #2d8f5f 100%); padding: 40px 30px; text-align: center;">
-                                                    <!-- Replace src with your company logo URL -->
-                                                    <img src="{{ asset('logo.png') }}" alt="Company Logo" style="max-width: 200px; height: auto; display: block; margin: 0 auto;">
-                                                </td>
+                                                <td style="color: #6a6a6a; font-size: 13px; padding: 0 0 4px 0;">Participant</td>
                                             </tr>
-                                            
-                                            <!-- Main Content -->
                                             <tr>
-                                                <td style="padding: 40px 30px;">
-                                                    <h1 style="color: #1a5f3f; font-size: 28px; margin: 0 0 20px 0; text-align: center;">Congratulations, [Student Name]!</h1>
-                                                    
-                                                    <p style="color: #333333; font-size: 16px; line-height: 1.6; margin: 0 0 20px 0;">
-                                                        We are delighted to inform you that you have successfully completed the <strong style="color: #1a5f3f;">[Training Program Name]</strong> training program.
-                                                    </p>
-                                                    
-                                                    <p style="color: #333333; font-size: 16px; line-height: 1.6; margin: 0 0 30px 0;">
-                                                        Your dedication and hard work throughout this program have been exemplary. We're proud to present you with your certificate of completion.
-                                                    </p>
-                                                    
-                                                    <!-- Certificate Preview Box -->
-                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: 0 0 30px 0;">
-                                                        <tr>
-                                                            <td style="background-color: #f8f9fa; border-left: 4px solid #1a5f3f; padding: 20px; border-radius: 4px;">
-                                                                <p style="color: #666666; font-size: 14px; margin: 0 0 10px 0; font-weight: bold;">
-                                                                    📜 Certificate Details:
-                                                                </p>
-                                                                <p style="color: #333333; font-size: 14px; line-height: 1.5; margin: 0;">
-                                                                    <strong>Name:</strong> [Student Name]<br>
-                                                                    <strong>Program:</strong> [Training Program Name]<br>
-                                                                    <strong>Completion Date:</strong> [Date]<br>
-                                                                </p>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                    
-                                                    <!-- CTA Button -->
-                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: 0 0 30px 0;">
-                                                        <tr>
-                                                            <td style="text-align: center;">
-                                                                <a href="[CERTIFICATE_DOWNLOAD_LINK]" download style="display: inline-block; background: linear-gradient(135deg, #1a5f3f 0%, #2d8f5f 100%); color: #ffffff; text-decoration: none; padding: 15px 40px; border-radius: 5px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(26, 95, 63, 0.3);">
-                                                                    Download Your Certificate
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                    
-                                                    <p style="color: #666666; font-size: 14px; line-height: 1.6; margin: 0 0 20px 0; text-align: center;">
-                                                        You can also view and share your certificate on your professional profiles.
-                                                    </p>
-                                                    
-                                                    <!-- Divider -->
-                                                    <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 30px 0;">
-                                                    
-                                                    <p style="color: #333333; font-size: 15px; line-height: 1.6; margin: 0 0 15px 0;">
-                                                        <strong>What's Next?</strong>
-                                                    </p>
-                                                    
-                                                    <ul style="color: #666666; font-size: 14px; line-height: 1.8; margin: 0 0 20px 0; padding-left: 20px;">
-                                                        <li>Share your achievement on social media</li>
-                                                        <li>Add this certificate to your LinkedIn profile</li>
-                                                        <li>Explore our advanced training programs</li>
-                                                        <li>Join our alumni network for continued learning</li>
-                                                    </ul>
-                                                    
-                                                    <p style="color: #333333; font-size: 15px; line-height: 1.6; margin: 0;">
-                                                        Once again, congratulations on this achievement. We look forward to seeing your continued growth and success!
-                                                    </p>
-                                                </td>
+                                                <td style="color: #1a1a1a; font-size: 15px; font-weight: 500; padding: 0 0 16px 0;">[Student Name]</td>
                                             </tr>
-                                            
-                                            <!-- Footer -->
                                             <tr>
-                                                <td style="background-color: #f8f9fa; padding: 30px; text-align: center; border-top: 1px solid #e0e0e0;">
-                                                    <p style="color: #1a5f3f; font-size: 16px; font-weight: bold; margin: 0 0 10px 0;">
-                                                        Nigeria Internet Registration Association (NiRA)
-                                                    </p>
-                                                    
-                                                    <p style="color: #666666; font-size: 13px; line-height: 1.6; margin: 0 0 15px 0;">
-                                                        Building Nigeria's digital future, one domain at a time.
-                                                    </p>
-                                                    
-                                                    <p style="color: #999999; font-size: 12px; line-height: 1.5; margin: 0 0 15px 0;">
-                                                        📧 <a href="mailto:admin@nira.org.ng" style="color: #1a5f3f; text-decoration: none;">admin@nira.org.ng</a> | 
-                                                        🌐 <a href="https://nira.org.ng" style="color: #1a5f3f; text-decoration: none;">www.nira.org.ng</a>
-                                                    </p>
-                                                    
-                                                   
-                                                    
-                                                    <p style="color: #999999; font-size: 11px; line-height: 1.5; margin: 20px 0 0 0;">
-                                                         If you have any questions, please contact us at admin@nira.org.ng
-                                                    </p>
-                                                    
-                                                    <p style="color: #cccccc; font-size: 10px; margin: 10px 0 0 0;">
-                                                        © 2025 Nigeria Internet Registration Association. All rights reserved.
-                                                    </p>
-                                                </td>
+                                                <td style="color: #6a6a6a; font-size: 13px; padding: 0 0 4px 0;">Program</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: #1a1a1a; font-size: 15px; font-weight: 500; padding: 0 0 16px 0;">[Training Program Name]</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: #6a6a6a; font-size: 13px; padding: 0 0 4px 0;">Completed</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: #1a1a1a; font-size: 15px; font-weight: 500;">[Date]</td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
                             </table>
-                        </body>
-                  </html>
+                            
+                            <!-- Download Button -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 0 32px 0;">
+                                <tr>
+                                    <td style="background-color: #1a5f3f; border-radius: 4px;">
+                                        <a href="[CERTIFICATE_DOWNLOAD_LINK]" download style="display: inline-block; color: #ffffff; text-decoration: none; padding: 14px 32px; font-size: 15px; font-weight: 500;">
+                                            Download Certificate
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin: 0 0 8px 0;">
+                                This certificate may be shared on professional networks and added to your credentials.
+                            </p>
+                            
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin: 0;">
+                                For questions regarding your certificate, please contact us at admin@nira.org.ng.
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding: 32px 40px; background-color: #fafafa; border-top: 1px solid #e5e5e5;">
+                            <p style="color: #1a1a1a; font-size: 14px; font-weight: 500; margin: 0 0 8px 0;">
+                                Nigeria Internet Registration Association
+                            </p>
+                            
+                            <p style="color: #6a6a6a; font-size: 14px; line-height: 1.5; margin: 0 0 16px 0;">
+                                admin@nira.org.ng<br>
+                                www.nira.org.ng
+                            </p>
+                            
+                            <p style="color: #9a9a9a; font-size: 12px; line-height: 1.5; margin: 0;">
+                                © 2025 Nigeria Internet Registration Association. All rights reserved.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
             </textarea>
         </div>
 

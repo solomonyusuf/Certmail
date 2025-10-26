@@ -12,6 +12,7 @@ use Masmerise\Toaster\Toastable;
 class EditTranning extends Component
 {
     use Toastable;
+    
     public function sendCertificates(Request $request)
     {
         $request->validate([
