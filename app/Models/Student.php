@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property string $id
  * @property string $name
+ * @property int $cert_id
  * @property string|null $certificate
  * @property string|null $email 
  * @property string $training_id
@@ -35,6 +36,7 @@ class Student extends Model
 		'name',
 		'certificate',
 		'email',
+		'cert_id',
 		'training_id'
 	];
 

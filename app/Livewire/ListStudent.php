@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\DB;
 use Mpdf\Mpdf;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Student;
@@ -72,8 +73,8 @@ class ListStudent extends Component
 
             $name  = trim($row[0] ?? '');
             $email = trim($row[1] ?? '');
-
-            // Skip invalid or incomplete rows
+            $nextId = DB::table('students')->max('cert_id') + 1 ?? 20112;
+            
             if (!$name || !$email) {
                 logger("Skipped row $index: missing name or email");
                 continue;
@@ -96,6 +97,7 @@ class ListStudent extends Component
                 'training_id' => $this->id,  
                 'name'        => $name,
                 'email'       => $email,
+                'cert_id'       => $nextId,
                 'certificate' => $certificate,
             ]);
 

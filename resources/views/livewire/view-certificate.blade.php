@@ -51,7 +51,7 @@
         ctx.fillStyle = "black";
         ctx.textAlign = "left";       
         ctx.textBaseline = "top";    
-        ctx.fillText("2012", 70, 50); 
+        ctx.fillText("{{ $student->cert_id }}", 70, 50); 
 
 
         // === 1️⃣ Name ===
