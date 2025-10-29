@@ -71,9 +71,9 @@ class ListStudent extends Component
         foreach ($rows as $index => $row) {
             if ($index === 0) continue;  
 
-            $name  = trim($row[0] ?? '');
-            $email = trim($row[1] ?? '');
-            $nextId = DB::table('students')->max('cert_id') + 1 ?? 20112;
+            $name  = trim($row[1] ?? '');
+            $email = trim($row[2] ?? '');
+            $nextId =  trim($row[0] ?? '');
             
             if (!$name || !$email) {
                 logger("Skipped row $index: missing name or email");
@@ -93,13 +93,24 @@ class ListStudent extends Component
                     ],
                     $certificate
                 );
-            Student::create([
-                'training_id' => $this->id,  
-                'name'        => $name,
-                'email'       => $email,
-                'cert_id'       => $nextId,
-                'certificate' => $certificate,
-            ]);
+            $existing = Student::where('training_id', $this->id)
+                ->where('email', $email)
+                ->exists();
+
+            if (!$existing) {
+                Student::create([
+                    'training_id' => $this->id,  
+                    'name'        => $name,
+                    'email'       => $email,
+                    'cert_id'     => $nextId,
+                    'certificate' => $certificate,
+                ]);
+            }
+            else
+            {
+                $this->error("Student email already exists");
+                return;
+            }
 
             $added++;
         }
@@ -108,7 +119,7 @@ class ListStudent extends Component
         logger("Total students added: $added");
 
         $this->success("Upload successful! $added students added.");
-        $this->resetPage();
+        $this->resetPage('excelFile');
     }
 
     public function download($id)

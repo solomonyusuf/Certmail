@@ -24,10 +24,9 @@ class Dashboard extends Component
     public function render()
     {
         // Counts
-        $totalStudents = Student::count();
+        $totalTranning = Tranning::count();
         $totalUsers = User::count();
-        $totalCertificates = Student::whereNotNull('certificate')->count();
-
+        
         // Training list
         $trainings = Tranning::query()
             ->when($this->search, function ($query) {
@@ -38,9 +37,8 @@ class Dashboard extends Component
             ->paginate(20);
 
         return view('livewire.dashboard',  compact(
-            'totalStudents',
+            'totalTranning',
             'totalUsers',
-            'totalCertificates',
             'trainings'
         ));
     }

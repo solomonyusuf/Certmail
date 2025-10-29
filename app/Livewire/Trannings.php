@@ -5,14 +5,15 @@ namespace App\Livewire;
 use App\Models\Student;
 use App\Models\Tranning;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use Masmerise\Toaster\Toastable;
 
 class Trannings extends Component
 {
-    use WithPagination,Toastable;    
+    use WithPagination,Toastable, WithFileUploads;    
 
-     public $title, $instructor, $date;
+     public $title, $instructor, $image, $date;
 
     protected $paginationTheme = 'tailwind';
 
@@ -26,6 +27,7 @@ class Trannings extends Component
         'title' => 'required|string|max:255',
         'instructor' => 'required|string|max:255',
         'date' => 'required|date',
+        'image' => 'required',
     ];
 
     public function createTraining()
@@ -33,23 +35,36 @@ class Trannings extends Component
         // Validate input
         $this->validate();
 
-        // Save to DB
-        $entity = Tranning::create([
-            'title' => $this->title,
-            'instructor' => $this->instructor,
-            'date' => $this->date,
-            'meta_data'=> json_encode([
-                'certificate' =>  file_get_contents(public_path('templates/template.html')) 
-            ])
-        ]);
+        if (Tranning::where('title', $this->title)->exists()) {
+            $this->error( 'A training with this title already exists.');
+            return;
+        }
+        else
+        {
+            
+            $imagePath = null;
+            if ($this->image) {
+                $imagePath = $this->image->store('certificates', 'public');
+            }
 
-        // Reset form
-        $this->reset(['title', 'instructor', 'date']);
+             // Save to DB
+            $entity = Tranning::create([
+                'title' => $this->title,
+                'instructor' => $this->instructor,
+                'date' => $this->date,
+                'meta_data'=> json_encode([
+                    'certificate' => $imagePath 
+                ])
+            ]);
 
-        $this->success('Training created successfully');
+            // Reset form
+            $this->reset(['title', 'instructor', 'date']);
 
-        // Refresh list automatically
-        $this->redirectRoute('edit_traning', $entity->id);
+            $this->success('Training created successfully');
+
+            // Refresh list automatically
+            return $this->redirectRoute('edit_traning', $entity->id);
+        }
     }
 
     public function delete($id)

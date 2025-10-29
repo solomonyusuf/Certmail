@@ -7,7 +7,7 @@
             </h2>
         </div>
 
-        <form class="mt-8 space-y-6" wire:submit.prevent="login">
+        <form class="mt-8 space-y-6" wire:submit="login">
             <div class="rounded-md shadow-sm space-y-4">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>

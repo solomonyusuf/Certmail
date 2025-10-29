@@ -22,7 +22,7 @@
          <!-- Certificate Upload + Save Button -->
         <div class="flex flex-col items-start gap-4">
 
-        <!-- Upload Field -->
+        {{-- <!-- Upload Field -->
         <div class="col-6">
             <label for="certificateUpload" class="block text-sm font-medium text-gray-700 mb-2">
             Upload Certificate
@@ -44,7 +44,7 @@
             >
             Save Certificate
             </button>
-        </div>
+        </div> --}}
 
         </div>
 
@@ -81,7 +81,7 @@
         ctx.fillStyle = "black";
         ctx.textAlign = "left";       
         ctx.textBaseline = "top";    
-        ctx.fillText("2012", 70, 50); 
+        ctx.fillText("ID HERE", 70, 50); 
 
 
         // === 1️⃣ Name ===
@@ -89,17 +89,17 @@
         ctx.fillStyle = "black";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("Solomon Yusuf", scaledWidth / 2, targetHeight / 2 - 10);
+        ctx.fillText("[Student Name]", scaledWidth / 2, targetHeight / 2 - 10);
 
         // === 2️⃣ Program Title ===
         ctx.font = "italic 18px Georgia"; // elegant italic font
         ctx.fillStyle = "black"; // dark gray
-        ctx.fillText("Reseller Programme", scaledWidth / 2, targetHeight / 2 + 50);
+        ctx.fillText("{{ $tranning->title }}", scaledWidth / 2, targetHeight / 2 + 50);
 
         // === 3️⃣ Date ===
         ctx.font = "16px Georgia"; // smaller, simple
         ctx.fillStyle = "#555"; // lighter gray
-        ctx.fillText("SEPTEMBER 2025", scaledWidth / 2, targetHeight / 2 + 90);
+        ctx.fillText("[Date Here]", scaledWidth / 2, targetHeight / 2 + 90);
         };
 </script>
 </div>
