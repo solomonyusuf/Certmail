@@ -15,9 +15,11 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        User::create([
+            'image' => 'https://nira.org.ng/wp-content/uploads/2022/03/File_000new-2-scaled.jpeg',
+            'name'=> 'Tech Support',
+            'email'=> 'Tech_support@nira.org.ng',
+            'password'=> bcrypt('Tech_support12!'),
         ]);
     }
 }

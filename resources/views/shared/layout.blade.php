@@ -24,7 +24,7 @@
     <div class="p-6 border-b border-gray-200">
       <div class="flex flex-col items-center">
         <div class="w-20 h-20 rounded-full bg-gray-300 overflow-hidden mb-3">
-          <img src="https://img.icons8.com/?size=100&id=7819&format=png&color=000000" 
+          <img src="{{ Auth::user()?->image ?? 'https://img.icons8.com/?size=100&id=7819&format=png&color=000000'}}" 
                alt="User Avatar" 
                class="w-full h-full object-cover">
         </div>
@@ -73,6 +73,31 @@
                     01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2l2-2h4l2 2z" />
           </svg>
           <span class="font-medium">Compose Mail</span>
+        </a>
+        <a href="{{ route('list_users') }}" 
+            class="{{ Route::is('list_users') 
+                      ? 'bg-green-200 text-green-600 font-bold' 
+                      : 'text-gray-700 hover:bg-gray-100' }} 
+                    flex items-center space-x-3 p-3 rounded-lg transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" 
+                viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span class="font-medium">List Users</span>
+          </a>
+
+        <a href="{{ route('register') }}" 
+          class="{{ Route::is('register') 
+                    ? 'bg-green-200 text-green-600 font-bold' 
+                    : 'text-gray-700 hover:bg-gray-100' }} 
+                  flex items-center space-x-3 p-3 rounded-lg transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" 
+              viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+          </svg>
+          <span class="font-medium">Create User</span>
         </a>
       
         <a href="{{ route('profile') }}" 

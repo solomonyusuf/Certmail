@@ -2,24 +2,28 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Masmerise\Toaster\Toastable;
 
 class Profile extends Component
 {
-    use Toastable;
+    use Toastable, WithFileUploads;
     public $name;
+    public $image;
     public $email;
     public $password;
     public $password_confirmation;
 
     public function mount()
     {
-        $user = Auth::user();
+        $user = User::find(Auth::user()->id);
         $this->name = $user->name;
         $this->email = $user->email;
+        $this->image = $user->image;
     }
 
     public function updateProfile()
@@ -30,9 +34,15 @@ class Profile extends Component
             'password' => 'nullable|min:8|confirmed'
         ]);
 
+        $imagePath = null;
+        if ($this->image) {
+            $imagePath = $this->image->store('uploads', 'public');
+        }
+
         $user = Auth::user();
         $user->name = $this->name;
         $user->email = $this->email;
+        $user->image = $imagePath;
 
         if ($this->password) {
             $user->password = Hash::make($this->password);

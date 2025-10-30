@@ -83,15 +83,39 @@
         <!-- Form inside modal -->
         <form wire:submit.prevent="createTraining">
           <!-- Upload Section -->
-          <div class="mb-4">
+          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-3 rounded-md flex items-start gap-3">
+                    <svg class="w-6 h-6 text-yellow-500 mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" 
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                            d="M13 16h-1v-4h-1m1-4h.01M12 9v2m0 4h.01M12 19a7 7 0 100-14 7 7 0 000 14z" />
+                    </svg>
+                    <div>
+                        <p class="text-sm text-yellow-800 font-medium">
+                            Please ensure your Cerificate follows the correct format:
+                        </p>
+                        <p class="mt-2 text-sm text-gray-600">
+                            You can download a sample of the certificate template here
+                            <a download href="{{ asset('templates/cert.png') }}" 
+                            class="text-green-600 hover:underline font-medium">
+                            Download Certificate
+                            </a>.
+                        </p>
+                    </div>
+                </div>
+                @if(isset($image))
+           
+                <div class="mb-4"> 
+                <img src="{{ asset($image->temporaryUrl()) }}" style="height:150px;width:150px;border-radius:75px;" />
+              </div>
+            
+            @endif
+          <div class="mb-4"> 
             <label class="font-medium text-gray-700">Upload Student Certificate Template</label>
             <input type="file" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm 
                         placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
               wire:model="image"
               accept="image/png, image/jpg, image/jpeg" />
-            @error('excelFile')
-            <span class="text-sm text-red-600">{{ $message }}</span>
-            @enderror
+       
           </div>
           <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700">Title</label>

@@ -21,7 +21,8 @@ class EditTranning extends Component
         ]);
 
         $training = Tranning::findOrFail($request->training_id);
-        $students = Student::where('training_id', $training->id)->get();
+        $studentIds = collect($request->student);
+        $students = Student::whereIn('id', $studentIds)->get();
 
         foreach ($students as $student) {
             // Prepare dynamic template
@@ -50,7 +51,10 @@ class EditTranning extends Component
 
     public function render()
     {
-        $trainings = Tranning::get();
-        return view('livewire.edit-tranning', compact('trainings'));
+        $trainings = Tranning::all();
+        $studentsByTraining = $trainings->mapWithKeys(fn($t) => [
+            $t->id => $t->students->map(fn($s) => ['id' => $s->id, 'name' => $s->name])
+        ]);
+        return view('livewire.edit-tranning', compact('trainings', 'studentsByTraining'));
     }
 }

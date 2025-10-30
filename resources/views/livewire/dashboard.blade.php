@@ -53,7 +53,7 @@
 
     <!-- Training List Table -->
     <div class="bg-white rounded-lg shadow border border-gray-200 p-6">
-      <h3 class="text-lg font-bold text-gray-800 mb-4">Training List</h3>
+      <h3 class="text-lg font-bold text-gray-800 mb-4">Latest Training List</h3>
 
       <!-- Search bar -->
       <div class="mb-4">

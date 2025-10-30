@@ -3,7 +3,7 @@
          <div class="flex flex-col items-center">
             <img src="{{ asset('logo.png') }}" alt="Logo" class="h-16 w-24 object-contain" />
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Create your account
+                Create new user
             </h2>
         </div>
 
@@ -22,19 +22,66 @@
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
                     @error('email') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
+                <div 
+                    x-data="{
+                        password: '',
+                        confirm: '',
+                        showError: false,
+                        get passwordMatch() {
+                            return this.password && this.confirm && this.password === this.confirm;
+                        },
+                        validate() {
+                            this.showError = !this.passwordMatch;
+                        }
+                    }"
+                >
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input 
+                            x-model="password" 
+                            wire:model="password"
+                            id="password"
+                            name="password"
+                            type="password"
+                            required
+                            minlength="8"
+                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\W_]).{8,}"
+                            @input="validate"
+                            class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm text-gray-900 focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                        >
+                        <p class="text-xs text-gray-500 mt-1">
+                            Must include uppercase, lowercase, number, and symbol (min 8 chars)
+                        </p>
+                        @error('password') 
+                            <span class="text-red-500 text-xs">{{ $message }}</span> 
+                        @enderror
+                    </div>
 
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input wire:model="password" id="password" name="password" type="password" required 
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                    @error('password') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    <!-- Confirm Password -->
+                    <div>
+                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                        <input 
+                            x-model="confirm"
+                            wire:model="password_confirmation"
+                            id="password_confirmation"
+                            name="password_confirmation"
+                            type="password"
+                            required
+                            @input="validate"
+                            class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm text-gray-900 focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                        >
+
+                        <!-- Live feedback -->
+                        <template x-if="showError">
+                            <p class="text-red-500 text-xs mt-1">Passwords do not match.</p>
+                        </template>
+                        <template x-if="passwordMatch">
+                            <p class="text-green-600 text-xs mt-1">Passwords match ✅</p>
+                        </template>
+                    </div>
                 </div>
 
-                <div>
-                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
-                    <input wire:model="password_confirmation" id="password_confirmation" name="password_confirmation" type="password" required 
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                </div>
             </div>
 
             <div>
@@ -44,11 +91,11 @@
                 </button>
             </div>
 
-            <div class="text-center">
+            {{-- <div class="text-center">
                 <a href="{{ route('login') }}" class="text-sm text-green-600 hover:text-green-500 font-medium">
                     Already have an account? Login
                 </a>
-            </div>
+            </div> --}}
         </form>
     </div>
 </div>

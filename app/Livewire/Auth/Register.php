@@ -32,13 +32,12 @@ class Register extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        Auth::login($user);
-        $this->success('Registration Successful');
-        $this->redirectRoute('dashboard');
+        $this->success('User Registration Successful');
+        $this->redirectRoute('list_users');
     }
 
     public function render()
     {
-        return view('livewire.auth.register')->layout('shared.auth');
+        return view('livewire.auth.register')->layout('shared.layout');
     }
 }

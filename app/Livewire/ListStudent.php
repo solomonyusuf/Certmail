@@ -79,6 +79,14 @@ class ListStudent extends Component
                 logger("Skipped row $index: missing name or email");
                 continue;
             }
+
+            $check = Student::where(['cert_id'=> $nextId])->first();
+            
+            if(!$check)
+            {
+                $this->error("Student Certificate ID already exists");
+                return;
+            } 
             
             $certificate = $this->certificate;
             

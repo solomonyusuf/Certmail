@@ -9,6 +9,20 @@
 
     <form wire:submit.prevent="updateProfile" class="space-y-4">
         <!-- Name -->
+        @if($image)
+        <div class="mb-4"> 
+            <img src="{{ asset($image) }}" style="height:150px;width:150px;border-radius:75px;" />
+        </div>
+        @endif
+
+        <div class="mb-4"> 
+            <label class="font-medium text-gray-700">Upload User Image</label>
+            <input type="file" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                        placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              wire:model="image"
+              accept="image/png, image/jpg, image/jpeg" />
+          </div>
+
         <div>
             <label class="block text-sm font-medium">Name</label>
             <input type="text" wire:model="name"
