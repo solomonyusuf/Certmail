@@ -31,7 +31,7 @@ class Profile extends Component
         $this->validate([
             'name'  => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . Auth::id(),
-            'password' => 'nullable|min:8|confirmed'
+            'password' => 'nullable'
         ]);
 
         $imagePath = null;

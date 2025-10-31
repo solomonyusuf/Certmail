@@ -41,7 +41,7 @@
         <!-- Password -->
         <div>
             <label class="block text-sm font-medium">New Password</label>
-            <input type="password" wire:model="password"
+            <input type="password" wire:model="text"
                    class="w-full border rounded px-3 py-2 focus:ring focus:ring-indigo-300">
             @error('password') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
@@ -49,7 +49,7 @@
         <!-- Confirm Password -->
         <div>
             <label class="block text-sm font-medium">Confirm Password</label>
-            <input type="password" wire:model="password_confirmation"
+            <input type="text" wire:model="password_confirmation"
                    class="w-full border rounded px-3 py-2 focus:ring focus:ring-indigo-300">
         </div>
 

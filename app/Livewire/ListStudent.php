@@ -52,15 +52,14 @@ class ListStudent extends Component
     public function save()
     {
         $this->validate([
-           'excelFile' => 'required|mimes:xls,xlsx,csv|max:5120',
-//             
+           'excelFile' => 'required|mimes:xls,xlsx,csv|max:5120',      
         ]);
 
         $excelPath = $this->excelFile->store('uploads/excel', 'public');
         $excelFilePath = Storage::disk('public')->path($excelPath);
 
         $rows = Excel::toArray([], $excelFilePath)[0] ?? [];
-
+ 
         if (empty($rows) || count($rows) <= 1) {
             session()->flash('error', 'The Excel file appears to be empty or missing data.');
             return;
@@ -82,7 +81,7 @@ class ListStudent extends Component
 
             $check = Student::where(['cert_id'=> $nextId])->first();
             
-            if(!$check)
+            if($check)
             {
                 $this->error("Student Certificate ID already exists");
                 return;
