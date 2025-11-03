@@ -13,7 +13,8 @@ class Profile extends Component
 {
     use Toastable, WithFileUploads;
     public $name;
-    public $image;
+    public $image = null;
+    public $user_image;
     public $email;
     public $password;
     public $password_confirmation;
@@ -21,6 +22,7 @@ class Profile extends Component
     public function mount()
     {
         $user = User::find(Auth::user()->id);
+        $this->user_image = $user->image;
         $this->name = $user->name;
         $this->email = $user->email;
         $this->image = $user->image;
@@ -29,15 +31,18 @@ class Profile extends Component
     public function updateProfile()
     {
         $this->validate([
+            'image'  => 'nullable',
             'name'  => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . Auth::id(),
             'password' => 'nullable'
         ]);
 
-        $imagePath = null;
-        if ($this->image) {
+        $imagePath = $this->user_image;
+
+        if ($this->image instanceof \Illuminate\Http\UploadedFile) {
             $imagePath = $this->image->store('uploads', 'public');
         }
+
 
         $user = Auth::user();
         $user->name = $this->name;

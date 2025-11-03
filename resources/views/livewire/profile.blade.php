@@ -7,7 +7,7 @@
         </div>
     @endif
 
-    <form wire:submit.prevent="updateProfile" class="space-y-4">
+    <form wire:submit="updateProfile" enctype="multipart/form-data" class="space-y-4">
         <!-- Name -->
         @if($image)
         <div class="mb-4"> 
@@ -33,7 +33,7 @@
         <!-- Email -->
         <div>
             <label class="block text-sm font-medium">Email</label>
-            <input type="email" wire:model="email"
+            <input type="email" disabled wire:model="email"
                    class="w-full border rounded px-3 py-2 focus:ring focus:ring-indigo-300">
             @error('email') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
