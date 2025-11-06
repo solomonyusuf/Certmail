@@ -18,20 +18,19 @@
                 </svg>
                 New Excel Students Upload
             </button>
-           <a href="{{ route('edit_certificate', $train->id) }}"
+            <a href="{{ route('edit_certificate', $train->id) }}"
                 class="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
                 <!-- Eye Icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" 
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" 
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round"
                         d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
                 Preview Certificate
-             </a>
+            </a>
 
-             
+
         </div>
 
         <!-- Training List Table -->
@@ -40,7 +39,7 @@
 
             <!-- Search bar -->
             <div class="mb-4 flex items-center gap-2">
-                <input type="text" wire:model.debounce.300ms="search" placeholder="Search trainings..."
+                <input type="text" id="searchInput" placeholder="Search trainings..."
                     class="w-full md:w-1/3 px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300">
 
                 <!-- Clear All Button -->
@@ -67,7 +66,7 @@
 
 
             <div class="overflow-x-auto w-full">
-                <table class="min-w-full divide-y divide-gray-200">
+                <table id="trainingsTable" class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">#Student ID</th>
@@ -84,7 +83,7 @@
                             <td class="px-6 py-4 text-sm text-gray-600">{{ $student->email }}</td>
                             <td class="px-6 py-4 text-sm text-gray-600">
                                 @if($student->certificate)
-                                <a target="__blank" href="{{ route('view_certificate', $student->id) }}"  
+                                <a target="__blank" href="{{ route('view_certificate', $student->id) }}"
                                     class="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
                                     <!-- Document Plus Icon -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
@@ -120,28 +119,26 @@
                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Bulk Student Upload</h2>
 
                 <!-- Form inside modal -->
-               <form wire:submit="save" enctype="multipart/form-data" class="space-y-4">
+                <form wire:submit="save" enctype="multipart/form-data" class="space-y-4">
 
                     <!-- Upload Section -->
                     <div>
                         <label class="font-medium text-gray-700">Upload Student Excel List</label>
-                        <input 
-                            type="file"
+                        <input type="file"
                             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm 
                                 placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                             wire:model="excelFile"
-                            accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv" 
-                        />
-                        @error('excelFile') 
-                            <span class="text-sm text-red-600">{{ $message }}</span> 
+                            accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv" />
+                        @error('excelFile')
+                        <span class="text-sm text-red-600">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <!-- ⚠️ Warning & Sample Template Section -->
                     <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-md flex items-start gap-3">
-                        <svg class="w-6 h-6 text-yellow-500 mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" 
+                        <svg class="w-6 h-6 text-yellow-500 mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 16h-1v-4h-1m1-4h.01M12 9v2m0 4h.01M12 19a7 7 0 100-14 7 7 0 000 14z" />
                         </svg>
                         <div>
@@ -154,10 +151,10 @@
                                 <li>Column 3: Email</li>
                             </ul>
                             <p class="mt-2 text-sm text-gray-600">
-                                You can download a sample Excel template 
-                                <a href="{{ asset('templates/Students List.xlsx') }}" 
-                                class="text-green-600 hover:underline font-medium">
-                                here
+                                You can download a sample Excel template
+                                <a href="{{ asset('templates/Students List.xlsx') }}"
+                                    class="text-green-600 hover:underline font-medium">
+                                    here
                                 </a>.
                             </p>
                         </div>
@@ -165,23 +162,18 @@
 
                     <!-- Buttons -->
                     <div class="flex justify-start gap-2 mt-4">
-                        <button 
-                            type="button" 
-                            @click="open = false"
-                            class="px-4 py-2 rounded-lg border text-gray-600 hover:bg-gray-100"
-                        >
+                        <button type="button" @click="open = false"
+                            class="px-4 py-2 rounded-lg border text-gray-600 hover:bg-gray-100">
                             Cancel
                         </button>
-                        <button 
-                            type="submit"
-                            @click="open = false"
-                            class="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 flex items-center gap-2"
-                        >
-                            <svg wire:loading wire:target="save" class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 24 24">
+                        <button type="submit" @click="open = false"
+                            class="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 flex items-center gap-2">
+                            <svg wire:loading wire:target="save" class="animate-spin h-4 w-4 text-white"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
                                     stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z">
+                                </path>
                             </svg>
                             <span>Save</span>
                         </button>
@@ -191,6 +183,21 @@
 
             </div>
         </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const table = document.getElementById("trainingsTable");
+    const rows = table.querySelectorAll("tbody tr");
 
+    searchInput.addEventListener("keyup", () => {
+      const query = searchInput.value.toLowerCase();
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(query) ? "" : "none";
+      });
+    });
+  });
+        </script>
     </div>
 </div>

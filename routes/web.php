@@ -15,13 +15,14 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Login::class)->name('login');
+Route::get('/view-certificate-{id}', ViewCertificate::class)->name('view_certificate');
+    
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/trannings', Trannings::class)->name('trannings');
     Route::get('/edit-tranning-{id}', ListStudent::class)->name('edit_traning');
     Route::get('/edit-certificate-{id}', EditCertificate::class)->name('edit_certificate');
-    Route::get('/view-certificate-{id}', ViewCertificate::class)->name('view_certificate');
     Route::get('/mail', EditTranning::class)->name('mail');
     Route::get('/profile', Profile::class)->name('profile');
     Route::get('/list-users', ListUser::class)->name('list_users');

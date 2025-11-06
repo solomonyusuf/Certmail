@@ -76,7 +76,22 @@
       </div>
     </div>
 
- 
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const table = document.getElementById("trainingsTable");
+    const rows = table.querySelectorAll("tbody tr");
+
+    searchInput.addEventListener("keyup", () => {
+      const query = searchInput.value.toLowerCase();
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(query) ? "" : "none";
+      });
+    });
+  });
+  </script>
 
   </div>
 
