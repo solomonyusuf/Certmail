@@ -1,10 +1,18 @@
-<div class="min-h-screen flex items-center justify-center bg-green-100 py-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <style>
+        body{
+            background:url('templates/bg.jpg') center;
+        }
+    </style>
     <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl shadow-xl">
         <div class="flex flex-col items-center">
             <img src="{{ asset('logo.png') }}" alt="Logo" class="h-16 w-24 object-contain" />
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Sign in to Certmailer
+               .NG Academy Certificate Generator
             </h2>
+            <p class="mt-2 text-center text-gray-400">
+                Sign in to Certmailer
+            </p>
         </div>
 
         <form class="mt-8 space-y-6" wire:submit="login">
