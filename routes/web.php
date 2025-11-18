@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UploadController;
+use App\Http\Middleware\LockMiddleware;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Dashboard;
@@ -8,17 +9,21 @@ use App\Livewire\EditCertificate;
 use App\Livewire\EditTranning;
 use App\Livewire\ListStudent;
 use App\Livewire\ListUser;
+use App\Livewire\LockPage;
 use App\Livewire\Profile;
 use App\Livewire\Trannings;
 use App\Livewire\ViewCertificate;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
+
+
 Route::get('/', Login::class)->name('login');
 Route::get('/view-certificate-{id}', ViewCertificate::class)->name('view_certificate');
+Route::get('/2fa-verify', LockPage::class)->name('lock_page');
     
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'lock'])->group(function(){
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/trannings', Trannings::class)->name('trannings');
     Route::get('/edit-tranning-{id}', ListStudent::class)->name('edit_traning');

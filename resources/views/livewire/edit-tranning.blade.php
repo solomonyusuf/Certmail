@@ -1,4 +1,5 @@
 <div class="max-w-5xl mx-auto bg-white shadow-md rounded-lg p-6">
+
     <link rel="stylesheet"
         href="https://cdn.ckeditor.com/4.14.1/full-all/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css">
     <style>
@@ -6,6 +7,9 @@
             display: none;
         }
     </style>
+    @livewire('lock-page', ['status'=> 'page', 'url' => request()->url()])
+   
+    @if ($approve)
     <form action="{{ route('send_mail') }}" method="POST">
         @csrf
 
@@ -259,7 +263,7 @@
             ⚠️ Note: This process may take up to <span class="font-semibold">5–10 minutes</span> depending on the list.
         </p>
     </form>
-
+    @endif
     <!-- CKEditor Scripts -->
     <script src="//cdn.ckeditor.com/4.14.1/full-all/ckeditor.js"></script>
     <script src="https://cdn.ckeditor.com/4.14.1/full-all/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>

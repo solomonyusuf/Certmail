@@ -13,6 +13,8 @@ class EditTranning extends Component
 {
     use Toastable;
     
+    public $approve;
+
     public function sendCertificates(Request $request)
     {
         $request->validate([
@@ -51,6 +53,12 @@ class EditTranning extends Component
 
     public function render()
     {
+        $verifiedPages = session('lockscreen_verified_pages', []);
+
+        // Check if this route is already approved
+        if (isset($verifiedPages[request()->url()])) {
+            $this->approve = true;
+        }
         $trainings = Tranning::all();
         $studentsByTraining = $trainings->mapWithKeys(fn($t) => [
             $t->id => $t->students->map(fn($s) => ['id' => $s->id, 'name' => $s->name])
