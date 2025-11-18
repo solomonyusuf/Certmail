@@ -25,7 +25,7 @@ class Trannings extends Component
     }
     protected $rules = [
         'title' => 'required|string|max:255',
-        'instructor' => 'required|string|max:255',
+        'instructor' => 'nullable|string',
         'date' => 'required|date',
         'image' => 'required',
     ];
@@ -50,7 +50,7 @@ class Trannings extends Component
              // Save to DB
             $entity = Tranning::create([
                 'title' => $this->title,
-                'instructor' => $this->instructor,
+                'instructor' => $this->instructor ?? '',
                 'date' => $this->date,
                 'meta_data'=> json_encode([
                     'certificate' => $imagePath 

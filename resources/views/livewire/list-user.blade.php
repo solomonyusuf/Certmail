@@ -29,7 +29,7 @@
       </svg>
       <!-- Search bar -->
       <div class="mb-4">
-        <input type="text" id="searchInput" placeholder="Search trainings..."
+        <input type="text" id="searchInput" placeholder="Search list..."
           class="w-full md:w-1/3 px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300">
       </div>
 

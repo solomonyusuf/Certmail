@@ -47,7 +47,7 @@
             <tr>
               <td class="px-6 py-4 text-sm text-gray-900">{{ $trainings->firstItem() + $index }}</td>
               <td class="px-6 py-4 text-sm text-gray-900">{{ $training->title }}</td>
-              <td class="px-6 py-4 text-sm text-gray-600">{{ $training->instructor }}</td>
+              <td class="px-6 py-4 text-sm text-gray-600">{{ $training?->instructor }}</td>
               <td class="px-6 py-4 text-sm text-gray-600">{{ $training->date }}</td>
               <td class="px-6 py-4 flex gap-2">
                 <a href="{{ route('edit_traning', $training->id) }}"
@@ -75,13 +75,13 @@
     </div>
 
     <!-- Modal (same Alpine scope as button) -->
-    <div x-show="open" x-transition class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+    <div x-show="open" x-transition style="margin-top: 0;" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
       style="display: none;">
-      <div @click.away="open = false" class="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
+      <div @click.away="open = false" class="bg-white rounded-lg shadow-lg w-full  p-6" style="width: 800px;">
         <h2 class="text-xl font-semibold text-gray-800 mb-4">Add New Training</h2>
 
         <!-- Form inside modal -->
-        <form wire:submit.prevent="createTraining">
+        <form  wire:submit.prevent="createTraining">
           <!-- Upload Section -->
           <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-3 rounded-md flex items-start gap-3">
             <svg class="w-6 h-6 text-yellow-500 mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -98,6 +98,7 @@
               </p>
             </div>
           </div>
+          <div class="grid grid-cols-2 gap-4">
           @if(isset($image))
 
           <div class="mb-4">
@@ -128,6 +129,7 @@
             <label class="block text-sm font-medium text-gray-700">Date</label>
             <input type="date" wire:model="date"
               class="w-full border px-3 py-2 rounded-lg focus:ring focus:ring-indigo-200">
+          </div>
           </div>
 
 
