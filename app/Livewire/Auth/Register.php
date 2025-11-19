@@ -11,13 +11,15 @@ use Masmerise\Toaster\Toastable;
 class Register extends Component
 {
     use Toastable;
-     public $name = '';
+    public $name = '';
+    public $role = '';
     public $email = '';
     public $password = '';
     public $password_confirmation = '';
 
     protected $rules = [
         'name' => 'required|string|max:255',
+        'role' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string|min:8|confirmed',
     ];
@@ -29,6 +31,7 @@ class Register extends Component
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
+            'role' => $this->role,
             'password' => Hash::make($this->password),
         ]);
 
@@ -38,6 +41,11 @@ class Register extends Component
 
     public function render()
     {
+        if(auth()->user()?->role == 'staff')
+        {
+            $this->error('Permission Denied');
+            $this->redirectRoute('dashboard');
+        }
         return view('livewire.auth.register')->layout('shared.layout');
     }
 }

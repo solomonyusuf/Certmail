@@ -1,5 +1,5 @@
 <div x-data="{ open: false }" class="min-h-screen bg-gray-100">
-
+    
     <!-- Top Header -->
     <div class="px-8 py-4 max-w-7xl mx-auto">
         <h1 class="text-2xl font-bold text-gray-800">{{ $train->title }} Students Overview</h1>
@@ -114,7 +114,7 @@
 
         <!-- Modal (same Alpine scope as button) -->
         <div x-show="open" x-transition
-            class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50" style="display: none;">
+            class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50" style="display: none;margin-top: 0;">
             <div @click.away="open = false" class="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Bulk Student Upload</h2>
 

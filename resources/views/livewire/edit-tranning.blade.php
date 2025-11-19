@@ -1,4 +1,5 @@
 <div class="max-w-5xl mx-auto bg-white shadow-md rounded-lg p-6">
+
     <link rel="stylesheet"
         href="https://cdn.ckeditor.com/4.14.1/full-all/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css">
     <style>
@@ -6,6 +7,9 @@
             display: none;
         }
     </style>
+    @livewire('lock-page', ['status'=> 'page', 'url' => request()->url()])
+   
+    @if ($approve)
     <form action="{{ route('send_mail') }}" method="POST">
         @csrf
 
@@ -138,11 +142,23 @@
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="margin: 0 auto; background-color: #ffffff;">
                                     
                                     <!-- Header -->
-                                    <tr>
-                                        <td style="padding: 32px 40px;">
-                                            <img src="{{ asset('logo.png') }}" alt="NiRA" style="height: 48px; display: block;">
-                                        </td>
-                                    </tr>
+                        <tr>
+                        <td style="padding: 32px 40px; vertical-align: middle;">
+                            
+                            <!-- Right-aligned logo -->
+                            <img src="{{ asset('logo.png') }}" 
+                                alt="NiRA" 
+                                style="height: 48px; display: inline-block; float: right;">
+
+                            <!-- Left-aligned logo -->
+                            <img src="{{ asset('nira-logo.png') }}" 
+                                alt="NiRA" 
+                                style="height: 48px; display: inline-block;">
+
+                        </td>
+                    </tr>
+
+
                                     
                                     <!-- Content -->
                                     <tr>
@@ -203,7 +219,7 @@
                                             </p>
                                             
                                             <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin: 0;">
-                                                For questions regarding your certificate, please contact us at admin@nira.org.ng.
+                                                For questions regarding your certificate, please contact us at academy@nira.org.ng.
                                             </p>
                                         </td>
                                     </tr>
@@ -216,7 +232,7 @@
                                             </p>
                                             
                                             <p style="color: #6a6a6a; font-size: 14px; line-height: 1.5; margin: 0 0 16px 0;">
-                                                admin@nira.org.ng<br>
+                                                academy@nira.org.ng<br>
                                                 www.nira.org.ng
                                             </p>
                                             
@@ -247,7 +263,7 @@
             ⚠️ Note: This process may take up to <span class="font-semibold">5–10 minutes</span> depending on the list.
         </p>
     </form>
-
+    @endif
     <!-- CKEditor Scripts -->
     <script src="//cdn.ckeditor.com/4.14.1/full-all/ckeditor.js"></script>
     <script src="https://cdn.ckeditor.com/4.14.1/full-all/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
