@@ -19,14 +19,14 @@
             <div class="rounded-md shadow-sm space-y-4">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
-                    <input wire:model="email" id="email" name="email" type="email" required 
+                    <input wire:model="email" placeholder="Enter your email" id="email" name="email" type="email" required 
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
                     @error('email') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
 
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input wire:model="password" id="password" name="password" type="password" required 
+                    <input wire:model="password" placeholder="Enter your password" id="password" name="password" type="password" required 
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
                     @error('password') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                 </div>
