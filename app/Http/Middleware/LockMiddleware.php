@@ -15,12 +15,11 @@ class LockMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $status = session()?->get('scope_otp');
+        $status = session()->has('scope_otp');
 
-        if ($status == true)
-            return $next($request);
-
-        return redirect()->route('lock_page');
-    
+        if ($status)
+            return redirect()->route('lock_page');
+            
+        return $next($request);
     }
 }

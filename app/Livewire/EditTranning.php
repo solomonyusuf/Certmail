@@ -46,8 +46,10 @@ class EditTranning extends Component
             });
         }
 
-        $this->success("Tranning Certificates Sent");
+        session()->remove('scope_otp');
 
+        $this->success("Tranning Certificates Sent");
+        
         return redirect()->route('trannings');
     }
 

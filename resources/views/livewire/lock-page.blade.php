@@ -64,14 +64,14 @@
                                     stroke-dashoffset="0" />
                             </svg>
                         </div>
-                        <div class="text-center">
+                        {{-- <div class="text-center">
                             <a wire:click="send('admin')" style="cursor: grab;" class=" mb-0 text-sm text-green-600 hover:text-green-500 font-medium">
                                 Click to request from Admin
                             </a>
                         </div>
                         <div class="text-center" style="margin-top: 0;">
                         OR
-                        </div>
+                        </div> --}}
                         <div class="text-center" style="margin-top: 0;">
                             <a wire:click="send('manager')" style="cursor: grab;"  class="text-sm text-green-600 hover:text-green-500 font-medium">
                                 Click to request from Line Manager 

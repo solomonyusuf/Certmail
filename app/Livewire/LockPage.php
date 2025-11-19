@@ -38,7 +38,7 @@ class LockPage extends Component
         // Check if this route is already approved
         if (isset($verifiedPages[$route])) {
             $this->approve = true;
-            if($status == 'otp') session()->put('scope_otp', true);
+            if($status == 'otp') session()->remove('scope_otp');
         }
     }
 
@@ -65,7 +65,7 @@ class LockPage extends Component
 
         $url   = $this->url;
         $ip    = request()->ip();
-        $reason = $this->status ? "to the route ({$url}) valid for 30mins" : "to the certificate generator platform";
+        $reason = $this->status == 'page' ? "to the route ({$url}) valid for 30mins" : "to the certificate generator platform";
 
         if ($user) {
             $user->notify(new GeneralNotification(
@@ -107,9 +107,12 @@ class LockPage extends Component
             if($this->status == 'otp') session()->remove('scope_otp');
 
             if($this->status == 'otp') $this->success('OTP verified!');
+            
+            if($this->status == 'otp') return $this->redirectRoute('dashboard');
 
-            $this->redirect($this->status == 'page' ? $this->url : 'dashboard');
-        } else {
+            $this->redirect($this->url);
+        } 
+        else {
             $this->addError('token', 'Invalid token kindly contact admin or request another.');
         }
     }
