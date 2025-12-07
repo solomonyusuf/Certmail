@@ -1,4 +1,4 @@
-name: BrightMind
+name: CertMail
 on:
   push:
     branches:
